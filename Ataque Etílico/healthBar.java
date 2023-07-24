@@ -18,7 +18,6 @@ public class healthBar extends Actor
     }
     
     public void changeHealth(int health){
-        System.out.println(health);
         switch(health){
             case 6:
                 setImage("sprite6.png");
