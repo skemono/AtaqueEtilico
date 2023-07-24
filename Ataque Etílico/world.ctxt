@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=world
+comment0.text=\r\n\ \r\n
+comment1.params=
+comment1.target=world()
+comment2.params=x\ y\ what
+comment2.target=void\ spawnObject(int,\ int,\ java.lang.String)
+comment3.params=gragi\ damage
+comment3.target=void\ changeGragiHealth(greenfoot.Actor,\ boolean)
+numComments=4
