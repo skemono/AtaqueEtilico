@@ -36,7 +36,7 @@ public class goblinTender extends Actor
             {
                 setImage("idle7.png");
                 
-                rnd = Greenfoot.getRandomNumber(2);
+                rnd = Greenfoot.getRandomNumber(1);
                 
                 if (rnd == 1){
                     action = "throw";

@@ -2,18 +2,22 @@ import lang.stride.*;
 import java.util.*;
 import greenfoot.*;
 
+
+
 /**
  * 
  */
 public class gragi extends Actor
 {
     private boolean drinking = false;
+    private int htime = 0;
 
     /**
      * Act - do whatever the gragi wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
+        htime++;
         if (!drinking){
             if (Greenfoot.isKeyDown("d"))
             {
@@ -32,6 +36,10 @@ public class gragi extends Actor
                 setLocation(getX(), getY()-4);
                 turn(10);
             }
+        }
+        if (htime == 100) {
+            htime = 0;
+            ((world)getWorld()).changeGragiHealth(this, true);
         }
         
         Actor bkActor = checkKegColl();
