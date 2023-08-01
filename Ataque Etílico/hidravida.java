@@ -56,8 +56,13 @@ public class hidravida extends Actor
         if (desTime >= 440){((world)getWorld()).removeHidra(this); desTime = 0;}
     }
     
-    public void setOrigin(int x, int y){
+    public void setOrigin(int x, int y, Actor target){
         orgX = x;
         orgY = y;
+        
+        int rndOffset = ((Greenfoot.getRandomNumber(10))/5) + 1;
+        goalX = x + ((target.getX() - x) * rndOffset);
+        goalY = y + ((target.getY() - y) * rndOffset);
+        
     }
 }

@@ -8,6 +8,7 @@ import greenfoot.*;
 public class world extends World
 {
     private GreenfootSound backgroundMusic = new GreenfootSound("music.mp3");
+    private Actor gragiActor;
     /**
      * Constructor for objects of class world.
      */
@@ -30,11 +31,12 @@ public class world extends World
             addObject(newKeg,x,y);
         } else if (what == "hidravida"){
             hidravida newVida = new hidravida();
-            newVida.setOrigin(x,y);
+            newVida.setOrigin(x,y, gragiActor);
             addObject(newVida,x,y);
         }
 
     }
+    
 
     public void changeGragiHealth(Actor gragi, boolean damage){
         if (damage && gragiHp > 0){
@@ -45,7 +47,8 @@ public class world extends World
         if (gragiHp == 0){
             backgroundMusic.stop();
             Greenfoot.playSound("GragasDeath.mp3");
-            removeObject(gragi);
+            overScreen w = new overScreen();
+            Greenfoot.setWorld(w);
         }
         healthBar barraVida = getObjects(healthBar.class).get(0);
         barraVida.changeHealth(gragiHp);
@@ -76,5 +79,7 @@ public class world extends World
         addObject(gragi,653,387);
         gragi.setLocation(607,424);
         gragi.setLocation(587,423);
+        
+        gragiActor = gragi;
     }
 }

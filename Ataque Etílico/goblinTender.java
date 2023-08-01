@@ -8,6 +8,7 @@ import greenfoot.*;
 public class goblinTender extends Actor
 {
     private int atime = 0;
+    
     private String action = "idle";
     
     private String currentThrowFrame0 = "throw0.png";
