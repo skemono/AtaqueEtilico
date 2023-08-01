@@ -11,6 +11,7 @@ public class gragi extends Actor
 {
     private boolean drinking = false;
     private int htime = 0;
+    private int score = 0;
 
     /**
      * Act - do whatever the gragi wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
@@ -37,9 +38,10 @@ public class gragi extends Actor
                 turn(10);
             }
         }
-        if (htime == 100) {
+        if (htime == 150) {
             htime = 0;
             ((world)getWorld()).changeGragiHealth(this, true);
+            Greenfoot.playSound("hurt.mp3");
         }
         
         Actor bkActor = checkKegColl();
@@ -47,6 +49,9 @@ public class gragi extends Actor
         if (bkActor != null){
             ((world)getWorld()).removeObject(bkActor);
             ((world)getWorld()).changeGragiHealth(this, false);
+            score++;
+            ((world)getWorld()).changeScore(score);
+            Greenfoot.playSound("GragasConsume.mp3");
 
             // PLAY DRINK ANIMATION AND BURP SOUND
             
@@ -56,6 +61,7 @@ public class gragi extends Actor
         if (hidraActor != null){
             ((world)getWorld()).removeObject(hidraActor);
             ((world)getWorld()).changeGragiHealth(this, true);
+            Greenfoot.playSound("hurt.mp3");
             
         }
     }

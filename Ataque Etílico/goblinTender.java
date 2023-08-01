@@ -13,6 +13,7 @@ public class goblinTender extends Actor
     private String currentThrowFrame0 = "throw0.png";
     private String currentThrowFrame1 = "throw1.png";
     private int rnd;
+    private int rndSound;
 
     /**
      * Act - do whatever the goblinTender wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
@@ -36,7 +37,7 @@ public class goblinTender extends Actor
             {
                 setImage("idle7.png");
                 
-                rnd = Greenfoot.getRandomNumber(1);
+                rnd = Greenfoot.getRandomNumber(2);
                 
                 if (rnd == 1){
                     action = "throw";
@@ -48,8 +49,8 @@ public class goblinTender extends Actor
         {
             if (atime==39) atime = 0;
             if (atime == 0){
-                rnd = Greenfoot.getRandomNumber(2);
-                if (rnd <1){
+                rnd = Greenfoot.getRandomNumber(3);
+                if (rnd <=1){
                     currentThrowFrame0 = "throw0.png";
                     currentThrowFrame1 = "throw1.png";
                 } else{
@@ -62,11 +63,20 @@ public class goblinTender extends Actor
             if (atime==12) 
             {
                 setImage("throw2.png");                
-                if (rnd <1){
+                if (rnd <=1){
                     ((world)getWorld()).spawnObject(getX(), getY() - 5, "keg");
                 } else{
                     ((world)getWorld()).spawnObject(getX(), getY() - 5,  "hidravida");
                 }
+                rndSound = Greenfoot.getRandomNumber(4);
+                if (rndSound == 1){
+                    Greenfoot.playSound("1throw.mp3");
+                } else if(rndSound == 2){
+                    Greenfoot.playSound("2throw.mp3");
+                } else{
+                    Greenfoot.playSound("3throw.mp3");
+                }
+                    
             }
             if (atime==16) setImage("throw3.png");
             if (atime==22) setImage("throw4.png");

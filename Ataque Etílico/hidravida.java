@@ -23,6 +23,8 @@ public class hidravida extends Actor
     
     int[] negOrPos = {-1,1};
     
+    int desTime;
+    
     public void act()
     {
         // Add your action code here
@@ -50,6 +52,8 @@ public class hidravida extends Actor
             if ((Math.abs(goalX - orgX)) <= 100) goalX = (goalX + (100 + Greenfoot.getRandomNumber(100) * negOrPos[numerito.nextInt(negOrPos.length)]));
             if ((Math.abs(goalY - orgY)) <= 100) goalY = goalY + 200 + Greenfoot.getRandomNumber(100);
         }
+        desTime++;
+        if (desTime >= 440){((world)getWorld()).removeHidra(this); desTime = 0;}
     }
     
     public void setOrigin(int x, int y){
